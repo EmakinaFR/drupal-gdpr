@@ -1,0 +1,24 @@
+drupal_gdpr.export_csv:
+  path: '/user/{uid}/export-csv'
+  methods: [GET]
+  defaults:
+    _controller: 'Drupal\drupal_gdpr\Controller\GDPRController::exportCSV'
+  requirements:
+    _permission: 'access content'
+
+drupal_gdpr:
+  path: '/admin/config/gdpr'
+  methods: [GET]
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'GDPR'
+  requirements:
+    _permission: 'access content'
+
+drupal_gdpr.export_csv.settings:
+  path: '/admin/config/gdpr/export_csv'
+  defaults:
+    _form: 'Drupal\drupal_gdpr\Form\CSVExportSettingsForm'
+    _title: 'GDPR settings'
+  requirements:
+    _permission: 'access content'

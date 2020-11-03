@@ -1,0 +1,19 @@
+{
+  "name": "emakinafr/drupal_gdpr",
+  "type": "drupal-module",
+  "description": "Adding some GDPR functionalities",
+  "keywords": [
+    "Drupal"
+  ],
+  "license": "MIT",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Mickaël Losiewicz",
+      "email": "mlo@emakina.fr"
+    }
+  ],
+  "require": {
+    "ext-zip": "*"
+  }
+}

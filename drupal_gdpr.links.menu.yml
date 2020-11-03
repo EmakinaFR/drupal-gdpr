@@ -1,0 +1,11 @@
+drupal_gdpr:
+  title: GDPR
+  parent: user.admin_index
+  route_name: drupal_gdpr
+  weight: -10
+
+drupal_gdpr.export_csv:
+  title: Export CSV
+  parent: drupal_gdpr
+  route_name: drupal_gdpr.export_csv.settings
+  weight: 0
