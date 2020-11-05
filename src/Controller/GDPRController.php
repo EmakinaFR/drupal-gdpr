@@ -127,7 +127,7 @@ class GDPRController extends ControllerBase
             }
 
             $eids = $query->execute();
-            if (!is_array($eids) || empty($eids)) {
+            if (!\is_array($eids) || empty($eids)) {
                 return null;
             }
 

@@ -7,11 +7,10 @@ use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountProxy;
 use Drupal\Core\Url;
 use Drupal\drupal_gdpr\Plugin\Field\FieldType\CSVExport;
-use Drupal\views\ViewExecutable;
-use Drupal\views\Views;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -20,11 +19,16 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *   label = @Translation("Link"),
  *   field_types = {
  *     "gdpr_csv_export"
+ *   },
+ *   settings = {
+ *     "classes" = ""
  *   }
  * )
  */
 class CSVExportFormatter extends FormatterBase
 {
+    const CLASSES = 'classes';
+
     /** @var AccountProxy */
     private $currentUser;
 
@@ -59,6 +63,43 @@ class CSVExportFormatter extends FormatterBase
     }
 
     /** {@inheritdoc} */
+    public static function defaultSettings()
+    {
+        return [
+                self::CLASSES => ''
+            ] + parent::defaultSettings();
+    }
+
+    /** {@inheritdoc} */
+    public function settingsForm(array $form, FormStateInterface $form_state)
+    {
+        $element = parent::settingsForm($form, $form_state);
+
+        $element[self::CLASSES] = [
+            '#type'          => 'textfield',
+            '#title'         => t('Classes'),
+            '#description'   => t('Added to the link for rendering'),
+            '#default_value' => $this->getSetting(self::CLASSES),
+            '#required'      => false
+        ];
+
+        return $element;
+    }
+
+    /** {@inheritdoc} */
+    public function settingsSummary()
+    {
+        $summary = [];
+
+        $classes = $this->getSetting(self::CLASSES);
+        if (!empty($classes)) {
+            $summary[self::CLASSES] = t('Classes : ') . $classes;
+        }
+
+        return $summary;
+    }
+
+    /** {@inheritdoc} */
     public function viewElements(FieldItemListInterface $items, $langcode)
     {
         $elements = [];
@@ -85,7 +126,7 @@ class CSVExportFormatter extends FormatterBase
                     'uid' => $uid
                 ]),
                 '#attributes' => [
-                    'class' => ['cta', 'cta--strong']
+                    'class' => [$this->getSetting(self::CLASSES)]
                 ]
             ];
         }
