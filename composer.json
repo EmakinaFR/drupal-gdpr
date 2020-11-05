@@ -1,9 +1,12 @@
 {
   "name": "emakinafr/drupal_gdpr",
   "type": "drupal-module",
-  "description": "Adding some GDPR functionalities",
+  "description": "A simple Drupal module which gives basic GDPR features and fast to be implemented.",
   "keywords": [
-    "Drupal"
+    "Drupal",
+    "Drupal8",
+    "GDPR",
+    "RGPD"
   ],
   "license": "MIT",
   "minimum-stability": "dev",

@@ -1,6 +1,6 @@
 package: Emakina
-name: EMK GDPR
+name: GDPR
 type: module
-description: Adding some GDPR functionalities
+description: Gives basic GDPR features
 core: 8.x
 version: 8.x-1.0
