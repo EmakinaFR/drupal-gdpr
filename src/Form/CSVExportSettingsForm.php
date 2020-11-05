@@ -62,8 +62,8 @@ class CSVExportSettingsForm extends ConfigFormBase
         $config = $this->config(self::FORM_ID);
 
         $form[self::USER_FIELDSET] = [
-            '#type'   => 'fieldset',
-            '#title'  => t('User entity'),
+            '#type'       => 'fieldset',
+            '#title'      => t('User entity'),
             '#attributes' => [
                 'id' => 'user-fields-wrapper'
             ]
