@@ -1,5 +1,5 @@
 {
-  "name": "emakinafr/drupal_gdpr",
+  "name": "emakinafr/drupal-gdpr",
   "type": "drupal-module",
   "description": "A simple Drupal module which gives basic GDPR features and fast to be implemented.",
   "keywords": [
