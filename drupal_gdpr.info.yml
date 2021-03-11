@@ -3,4 +3,4 @@ name: GDPR
 type: module
 description: Gives basic GDPR features
 core: 8.x
-version: 8.x-1.0
+version: 8.x-1.0.1

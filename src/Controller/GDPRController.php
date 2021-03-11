@@ -5,8 +5,9 @@ namespace Drupal\drupal_gdpr\Controller;
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityFieldManager;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\File\FileSystem;
+use Drupal\Core\File\FileSystemInterface;
 use Drupal\drupal_gdpr\Form\CSVExportSettingsForm;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -20,13 +21,13 @@ class GDPRController extends ControllerBase
 {
     const CSV_EXPORTS_FOLDER = 'public://gdpr/csv_exports';
 
-    /** @var EntityFieldManager */
+    /** @var EntityFieldManagerInterface */
     protected $entityFieldManager;
 
-    /** @var FileSystem */
+    /** @var FileSystemInterface */
     private $fileSystem;
 
-    public function __construct(EntityFieldManager $entityFieldManager, FileSystem $fileSystem)
+    public function __construct(EntityFieldManagerInterface $entityFieldManager, FileSystemInterface $fileSystem)
     {
         $this->entityFieldManager = $entityFieldManager;
         $this->fileSystem = $fileSystem;
