@@ -4,9 +4,9 @@ namespace Drupal\drupal_gdpr\Form;
 
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Entity\EntityFieldManager;
-use Drupal\Core\Entity\EntityTypeBundleInfo;
-use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
+use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -28,17 +28,17 @@ class CSVExportSettingsForm extends ConfigFormBase
     const USER_FIELDS = 'user_fields';
     const USER_FIELDSET = 'user_fieldset';
 
-    /** @var EntityFieldManager */
+    /** @var EntityFieldManagerInterface */
     protected $entityFieldManager;
 
-    /** @var EntityTypeBundleInfo */
+    /** @var EntityTypeBundleInfoInterface */
     protected $entityTypeBundleInfo;
 
-    /** @var EntityTypeManager */
+    /** @var EntityTypeManagerInterface */
     protected $entityTypeManager;
 
     /** {@inheritdoc} */
-    public function __construct(ConfigFactoryInterface $config_factory, EntityFieldManager $entityFieldManager, EntityTypeBundleInfo $entityTypeBundleInfo, EntityTypeManager $entityTypeManager)
+    public function __construct(ConfigFactoryInterface $config_factory, EntityFieldManagerInterface $entityFieldManager, EntityTypeBundleInfoInterface $entityTypeBundleInfo, EntityTypeManagerInterface $entityTypeManager)
     {
         parent::__construct($config_factory);
         $this->entityFieldManager = $entityFieldManager;
